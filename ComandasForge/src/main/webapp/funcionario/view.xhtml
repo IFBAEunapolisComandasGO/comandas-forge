@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{funcionarioBean.id}'/>
+		<f:event type="preRenderView" listener='#{funcionarioBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Funcionario"/>
+
+	<ui:define name="header">
+		Funcionario
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Funcionario
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="funcionarioBeanFuncionarioCargo" value="Cargo:"/>
+			<h:outputText id="funcionarioBeanFuncionarioCargo" value="#{funcionarioBean.funcionario.cargo}"/>
+			<h:outputText/>
+			<h:outputLabel for="funcionarioBeanFuncionarioNome" value="Nome:"/>
+			<h:outputText id="funcionarioBeanFuncionarioNome" value="#{funcionarioBean.funcionario.nome}"/>
+			<h:outputText/>
+			<h:outputLabel for="funcionarioBeanFuncionarioEmail" value="Email:"/>
+			<h:outputText id="funcionarioBeanFuncionarioEmail" value="#{funcionarioBean.funcionario.email}"/>
+			<h:outputText/>
+			<h:outputLabel for="funcionarioBeanFuncionarioSenha" value="Senha:"/>
+			<h:outputText id="funcionarioBeanFuncionarioSenha" value="#{funcionarioBean.funcionario.senha}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>
